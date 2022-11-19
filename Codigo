@@ -24,10 +24,10 @@ linha = abrir.readlines()
 m = []
 for j in linha:
     linhaa = []
-    for elem in j.strip():
-        if elem!=" ":
-            elemento = int(elem)
-            linhaa.append(elemento)
+    for elem in j.split():
+
+        elemento = int(elem)
+        linhaa.append(elemento)
     m.append(linhaa)
 
 abrir.close()
@@ -56,7 +56,7 @@ arestas_multiplasqtd = 0
 for i in range(len(m)):
     if m[i][i] != 0:
         lacos.append(i+1)#salvar o vertice que possui o laco
-        cont_lacos+=m[i][i]#contar quantos lacos tem
+        cont_lacos += m[i][i]#contar quantos lacos tem
         simples = 0
     for j in range(len(m[i])):        
         #VERIFICANDO SE EH SIMPLES
@@ -87,15 +87,16 @@ for i in range(len(m)):
             completo=0
     graus.append(aux)
     graus_cres.append(aux)
-graus_cres.sort(reverse = True)
+
 
 
 #SOMA +1 DE GRAU PARA QUANTIDADE DE LACOS NOS DEVIDOS VERTICES
 for i in range(len(m)):
     if m[i][i] != 0:
         graus[i]+=1
+        graus_cres[i]+=1
 
-
+graus_cres.sort(reverse = True)
 
 #===================================REGULAR====================================
 for i in range(1, len(graus)):
